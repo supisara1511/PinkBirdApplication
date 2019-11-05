@@ -8,24 +8,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-
 import buu.informatics.s59160134.pinkbirdapplication.R
-import buu.informatics.s59160134.pinkbirdapplication.databinding.FragmentGetstartedBinding
+import buu.informatics.s59160134.pinkbirdapplication.databinding.FragmentFlowStepThreeBinding
 
 /**
  * A simple [Fragment] subclass.
  */
-class GetStartedFragment : Fragment() {
+class FlowStepThreeFragment : Fragment() {
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentGetstartedBinding>(inflater,R.layout.fragment_getstarted,container,false)
-
-
+        val binding = DataBindingUtil.inflate<FragmentFlowStepThreeBinding>(inflater,R.layout.fragment_flow_step_three,container,false)
         binding.nextButton.setOnClickListener{ view : View ->
-            view.findNavController().navigate(R.id.action_get_started_to_flow_step_one)
+            view.findNavController().navigate(R.id.action_flow_step_three_to_home)
         }
-        return binding.root
+
+        return  binding.root
     }
 }

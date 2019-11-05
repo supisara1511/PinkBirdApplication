@@ -32,47 +32,37 @@
 
     <fragment
         android:id="@+id/fragment_flow_step_one"
-        android:name="buu.informatics.s59160134.pinkbirdapplication.getstarted.FlowStepFragment"
+        android:name="buu.informatics.s59160134.pinkbirdapplication.getstarted.FlowStepOneFragment"
         android:label="ONE"
         tools:layout="@layout/fragment_flow_step_one">
-        <argument
-            android:name="flowStepNumber"
-            android:defaultValue="1"
-            app:argType="integer" />
-        <action
-            android:id="@+id/next_action"
-            app:destination="@id/fragment_flow_step_two" />
 
+        <action
+            android:id="@+id/action_flow_step_one_to_flow_step_two"
+            app:destination="@id/fragment_flow_step_two" />
     </fragment>
 
     <fragment
         android:id="@+id/fragment_flow_step_two"
-        android:name="buu.informatics.s59160134.pinkbirdapplication.getstarted.FlowStepFragment"
+        android:name="buu.informatics.s59160134.pinkbirdapplication.getstarted.FlowStepTwoFragment"
         android:label="TWO"
         tools:layout="@layout/fragment_flow_step_two">
-        <argument
-            android:name="flowStepNumber"
-            android:defaultValue="2"
-            app:argType="integer" />
-        <action
-            android:id="@+id/next_action"
-            app:destination="@id/fragment_flow_step_three" />
 
+
+        <action
+            android:id="@+id/action_flow_step_two_to_flow_step_three"
+            app:destination="@id/fragment_flow_step_three" />
     </fragment>
 
     <fragment
         android:id="@+id/fragment_flow_step_three"
-        android:name="buu.informatics.s59160134.pinkbirdapplication.getstarted.FlowStepFragment"
+        android:name="buu.informatics.s59160134.pinkbirdapplication.getstarted.FlowStepThreeFragment"
         android:label="THREE"
         tools:layout="@layout/fragment_flow_step_three">
-        <argument
-            android:name="flowStepNumber"
-            android:defaultValue="3"
-            app:argType="integer" />
-        <action
-            android:id="@+id/next_action"
-            app:destination="@id/home_dest" />
 
+
+        <action
+            android:id="@+id/action_flow_step_three_to_home"
+            app:destination="@id/home_dest" />
     </fragment>
     <fragment
         android:id="@+id/getStartedFragment"
@@ -80,7 +70,7 @@
         android:label="Get Started"
         tools:layout="@layout/fragment_getstarted">
         <action
-            android:id="@+id/next_action"
+            android:id="@+id/action_get_started_to_flow_step_one"
             app:destination="@id/fragment_flow_step_one" />
     </fragment>
 </navigation>

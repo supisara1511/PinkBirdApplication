@@ -6,20 +6,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.databinding.DataBindingUtil
 import buu.informatics.s59160134.pinkbirdapplication.R
+import buu.informatics.s59160134.pinkbirdapplication.database.Setting
+import buu.informatics.s59160134.pinkbirdapplication.databinding.FragmentSettingBinding
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class SettingFragment : Fragment() {
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_setting, container, false)
+        val binding = DataBindingUtil.inflate<FragmentSettingBinding>(inflater, R.layout.fragment_setting,container,false)
+        return binding.root
     }
 
 
