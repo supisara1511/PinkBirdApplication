@@ -10,4 +10,5 @@
     <string name="savePeriod_btn">Save</string>
     <string name="getStarted">Get Started</string>
     <string name="next_text">Next</string>
+    <string name="Welcome_text">Welcome to PinkBird</string>
 </resources>
