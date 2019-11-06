@@ -28,4 +28,5 @@
     <string name="DatePeriod_text">12 Days</string>
     <string name="status">ประจำเดือนใน</string>
     <string name="date_text">9 October 2019</string>
+    <string name="stop_btn">STOP</string>
 </resources>
