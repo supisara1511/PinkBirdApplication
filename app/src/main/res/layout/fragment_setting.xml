@@ -61,8 +61,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:gravity="end"
-                    android:inputType="number"
-                    android:text="k"
+                    android:text="@={settingApp.date}"
                     />
 
             </TableRow>
@@ -82,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:text="l"
+                    android:text="@={settingApp.time}"
                     android:gravity="end"
                     android:inputType="time" />
 
@@ -105,7 +104,7 @@
                     android:ems="10"
                     android:gravity="end"
                     android:inputType="textPersonName"
-                    android:text="oi"/>
+                    android:text="@={settingApp.message}"/>
             </TableRow>
         </TableLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

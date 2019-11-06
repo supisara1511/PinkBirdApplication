@@ -12,7 +12,7 @@ import buu.informatics.s59160134.pinkbirdapplication.R
 /**
  * A simple [Fragment] subclass.
  */
-class historyFragment : Fragment() {
+class HistoryFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

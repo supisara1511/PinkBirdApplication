@@ -24,7 +24,7 @@
 
     <fragment
         android:id="@+id/history_dest"
-        android:name="buu.informatics.s59160134.pinkbirdapplication.history.historyFragment"
+        android:name="buu.informatics.s59160134.pinkbirdapplication.history.HistoryFragment"
         android:label="HISTORY"
         tools:layout="@layout/fragment_history">
     </fragment>

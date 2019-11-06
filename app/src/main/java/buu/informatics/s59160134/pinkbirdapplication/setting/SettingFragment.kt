@@ -13,11 +13,13 @@ import buu.informatics.s59160134.pinkbirdapplication.databinding.FragmentSetting
 
 
 class SettingFragment : Fragment() {
+    private var setting : Setting = Setting()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val binding = DataBindingUtil.inflate<FragmentSettingBinding>(inflater, R.layout.fragment_setting,container,false)
+        binding.settingApp = setting
         return binding.root
     }
 
