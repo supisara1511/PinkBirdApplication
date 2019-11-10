@@ -18,6 +18,7 @@ import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 
 /**
  * A simple [Fragment] subclass.
@@ -25,13 +26,20 @@ import java.time.format.DateTimeFormatter
 class HomeFragment : Fragment() {
 
 
-    private val home : Home = Home()
-    @RequiresApi(Build.VERSION_CODES.O)
+    private var home : Home = Home("","","","")
+    private var longPeriod = 28
+    private var havePeriod = false
+
+    @RequiresApi(value = Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val binding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater, R.layout.fragment_home,container,false)
+        val currentDate = LocalDate.now()
+        val lastDate = LocalDate.of(2019,11,9)
+        var countDate = ChronoUnit.DAYS.between(lastDate,currentDate)
+        checkStatusPeriod(countDate)
         home.currentDate = changeFormattedDate(LocalDate.now())
         binding.home = home
 
@@ -44,6 +52,19 @@ class HomeFragment : Fragment() {
         var formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy")
         var formattedDate = date.format(formatter).toString()
         return  formattedDate
+    }
+
+    fun checkStatusPeriod(countDate : Long){
+        if(havePeriod == true){
+            home.statusPeriod = "ประจำเดือนวันที่"
+            home.countDate = (countDate + 1).toString()
+        }else if (countDate > longPeriod) {
+            home.statusPeriod = "ประจำเกินมา"
+            home.countDate = (countDate - longPeriod).toString()
+        }else{
+            home.statusPeriod = "ประจำเดือนในอีก"
+            home.countDate = (longPeriod - countDate).toString()
+        }
     }
 
 

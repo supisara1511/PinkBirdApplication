@@ -1,4 +1,6 @@
 package buu.informatics.s59160134.pinkbirdapplication.database
 
-data class Home(var currentDate : String = "",var lastDate : String = "")  {
+import java.util.*
+
+data class Home(var currentDate : String = "",var lastDate : String = "",var statusPeriod : String = "",var countDate: String )  {
 }
