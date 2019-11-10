@@ -20,8 +20,9 @@ interface PeriodDatabaseDao {
     @Query("DELETE FROM period_history_table")
     fun clear()
 
-    @Query("SELECT * FROM period_history_table ORDER BY period_start DESC LIMIT 1")
-    fun getPeriod(): Period?
+
+    @Query("SELECT * FROM period_history_table ORDER BY periodId DESC LIMIT 1")
+    fun getToPeriod(): Period?
 
     @Query("SELECT * FROM period_history_table ORDER BY periodId DESC")
     fun getAllPeriod(): LiveData<List<Period>>

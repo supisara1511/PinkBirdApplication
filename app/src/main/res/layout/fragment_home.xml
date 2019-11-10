@@ -7,6 +7,10 @@
 
     <data>
         <variable
+            name="homeViewModel"
+            type="buu.informatics.s59160134.pinkbirdapplication.home.HomeViewModel" />
+
+        <variable
             name="home"
             type="buu.informatics.s59160134.pinkbirdapplication.database.Home"/>
     </data>
@@ -40,7 +44,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/getStared_btn"
+            app:layout_constraintBottom_toTopOf="@+id/start_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
@@ -61,14 +65,15 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/getStared_btn"
+            android:id="@+id/start_btn"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:text="@string/savePeriod_btn"
             app:layout_constraintBaseline_toBaselineOf="@+id/getStared_btn2"
             app:layout_constraintEnd_toStartOf="@+id/getStared_btn2"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:onClick="@{ () -> homeViewModel.startPeriod()}"/>
 
         <Button
             android:id="@+id/getStared_btn2"
@@ -79,7 +84,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/getStared_btn" />
+            app:layout_constraintStart_toEndOf="@+id/start_btn"
+            android:onClick="@{ () -> homeViewModel.endPeriod()}"/>
 
         <ImageView
             android:id="@+id/imageView2"
