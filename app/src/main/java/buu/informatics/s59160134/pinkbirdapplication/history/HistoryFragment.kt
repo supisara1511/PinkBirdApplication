@@ -1,6 +1,7 @@
 package buu.informatics.s59160134.pinkbirdapplication.history
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -41,9 +42,6 @@ class HistoryFragment : Fragment() {
                 adapter.data = it
             }
         })
-
         return binding.root
     }
-
-
 }
