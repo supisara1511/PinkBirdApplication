@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import buu.informatics.s59160134.pinkbirdapplication.database.Period
 import buu.informatics.s59160134.pinkbirdapplication.database.PeriodDatabaseDao
 import kotlinx.coroutines.*
@@ -21,9 +22,18 @@ class HistoryViewModel(val database: PeriodDatabaseDao, application: Application
 
     }
 
+    val clearButtonVisible = Transformations.map(periods) {
+        it?.isNotEmpty()
+    }
+
+    private var _showSnackbarEvent = MutableLiveData<Boolean?>()
+    val showSnackBarEvent: LiveData<Boolean?>
+        get() = _showSnackbarEvent
+
     fun onClear() {
         uiScope.launch {
             clear()
+            _showSnackbarEvent.value = true
         }
     }
 
@@ -31,6 +41,10 @@ class HistoryViewModel(val database: PeriodDatabaseDao, application: Application
         withContext(Dispatchers.IO) {
             database.clear()
         }
+    }
+
+    fun doneShowingSnackbar() {
+        _showSnackbarEvent.value = null
     }
 
 

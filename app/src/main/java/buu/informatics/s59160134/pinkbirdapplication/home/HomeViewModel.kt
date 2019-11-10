@@ -65,6 +65,7 @@ class HomeViewModel(val database: PeriodDatabaseDao, application: Application) :
             val oldPeriod = period.value ?: return@launch
             oldPeriod.periodEnd = LocalDate.now().toString()
             update(oldPeriod)
+            initializeTonight()
         }
     }
 
@@ -72,18 +73,13 @@ class HomeViewModel(val database: PeriodDatabaseDao, application: Application) :
     private suspend fun getToPeriodFromDatabase(): Period? {
         return withContext(Dispatchers.IO) {
             var period = database.getToPeriod()
-            if (period != null) {
-                if(period.periodEnd != ""){
-                    period = null
-                }
-            }
+           if(period?.periodEnd != ""){
+               period = null
+           }
             period
         }
 
-        return withContext(Dispatchers.IO) {
-            var period = database.getToPeriod()
-            period
-        }
+
     }
 
 
@@ -97,12 +93,7 @@ class HomeViewModel(val database: PeriodDatabaseDao, application: Application) :
         withContext(Dispatchers.IO) {
             database.update(night)
         }
-    }
 
-    private suspend fun clear() {
-        withContext(Dispatchers.IO) {
-            database.clear()
-        }
     }
 
 }

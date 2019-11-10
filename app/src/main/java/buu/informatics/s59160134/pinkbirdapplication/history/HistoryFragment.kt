@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders
 import buu.informatics.s59160134.pinkbirdapplication.R
 import buu.informatics.s59160134.pinkbirdapplication.database.PeriodDatabase
 import buu.informatics.s59160134.pinkbirdapplication.databinding.FragmentHistoryBinding
+import com.google.android.material.snackbar.Snackbar
 
 
 /**
@@ -42,6 +43,18 @@ class HistoryFragment : Fragment() {
                 adapter.data = it
             }
         })
+
+        viewModel.showSnackBarEvent.observe(this, Observer {
+            if (it == true) { // Observed state is true.
+                Snackbar.make(
+                    activity!!.findViewById(android.R.id.content),
+                    getString(R.string.cleared_message),
+                    Snackbar.LENGTH_SHORT // How long to display the message.
+                ).show()
+                viewModel.doneShowingSnackbar()
+            }
+        })
+
         return binding.root
     }
 }
