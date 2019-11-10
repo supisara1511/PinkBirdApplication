@@ -12,31 +12,13 @@ import kotlinx.coroutines.*
 
 class HistoryViewModel(val database: PeriodDatabaseDao, application: Application) : AndroidViewModel(application) {
 
-
-
-
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-    private var period = MutableLiveData<Period?>()
     val periods = database.getAllPeriod()
 
     init {
-        Log.i("HistoryViewModel", "MainViewModel created!")
-        initializeGameScore()
-    }
+        Log.i("HistoryViewModel", "HistoryViewModel created!")
 
-
-    private fun initializeGameScore() {
-        uiScope.launch {
-            period.value = getGameScoreFromDatabase()
-        }
-    }
-
-    private suspend fun getGameScoreFromDatabase(): Period? {
-        return withContext(Dispatchers.IO) {
-            var period = database.getToPeriod()
-            period
-        }
     }
 
     fun onClear() {
