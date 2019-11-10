@@ -44,6 +44,11 @@ class HomeViewModel(val database: PeriodDatabaseDao, application: Application) :
     }
 
 
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
+    }
+
     @RequiresApi(Build.VERSION_CODES.O)
     fun startPeriod(){
         uiScope.launch {
@@ -65,6 +70,16 @@ class HomeViewModel(val database: PeriodDatabaseDao, application: Application) :
 
 
     private suspend fun getToPeriodFromDatabase(): Period? {
+        return withContext(Dispatchers.IO) {
+            var period = database.getToPeriod()
+            if (period != null) {
+                if(period.periodEnd != ""){
+                    period = null
+                }
+            }
+            period
+        }
+
         return withContext(Dispatchers.IO) {
             var period = database.getToPeriod()
             period

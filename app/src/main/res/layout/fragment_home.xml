@@ -73,6 +73,7 @@
             app:layout_constraintEnd_toStartOf="@+id/getStared_btn2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
+            android:enabled="@{homeViewModel.startButtonVisible}"
             android:onClick="@{ () -> homeViewModel.startPeriod()}"/>
 
         <Button
@@ -85,6 +86,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/start_btn"
+            android:enabled="@{homeViewModel.stopButtonVisible}"
             android:onClick="@{ () -> homeViewModel.endPeriod()}"/>
 
         <ImageView
