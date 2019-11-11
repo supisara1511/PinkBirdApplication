@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProviders
 import buu.informatics.s59160134.pinkbirdapplication.R
 import buu.informatics.s59160134.pinkbirdapplication.database.Home
 import buu.informatics.s59160134.pinkbirdapplication.database.PeriodDatabase
+import buu.informatics.s59160134.pinkbirdapplication.database.StartedDatabase
 import buu.informatics.s59160134.pinkbirdapplication.databinding.FragmentHomeBinding
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -23,15 +24,11 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class HomeFragment : Fragment() {
 
-    private lateinit var viewModel: HomeViewModel
 
     private var home : Home = Home("","","","")
-
     private var longPeriod = 28
     private var havePeriod = false
 
@@ -43,16 +40,9 @@ class HomeFragment : Fragment() {
 
         val binding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater, R.layout.fragment_home,container,false)
 
-        val application = requireNotNull(this.activity).application
-
-        val dataSource = PeriodDatabase.getInstance(application).PeriodDatabaseDao
-
-        val viewModelFactory = HomeViewModelFactory(dataSource, application)
-
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(HomeViewModel::class.java)
 
 
-        binding.homeViewModel = viewModel
+
 
         val currentDate = LocalDate.now()
         val lastDate = LocalDate.of(2019,11,9)
@@ -60,8 +50,6 @@ class HomeFragment : Fragment() {
         checkStatusPeriod(countDate)
         home.currentDate = changeFormattedDate(LocalDate.now())
         binding.home = home
-
-        binding.lifecycleOwner = this
 
 
 

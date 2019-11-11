@@ -19,7 +19,6 @@ class HistoryViewModel(val database: PeriodDatabaseDao, application: Application
 
     init {
         Log.i("HistoryViewModel", "HistoryViewModel created!")
-
     }
 
     val clearButtonVisible = Transformations.map(periods) {

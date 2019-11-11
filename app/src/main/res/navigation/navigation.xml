@@ -38,7 +38,7 @@
 
         <action
             android:id="@+id/action_flow_step_one_to_flow_step_two"
-            app:destination="@id/fragment_flow_step_two" />
+            app:destination="@+id/fragment_flow_step_two" />
     </fragment>
 
     <fragment
@@ -50,7 +50,10 @@
 
         <action
             android:id="@+id/action_flow_step_two_to_flow_step_three"
-            app:destination="@id/fragment_flow_step_three" />
+            app:destination="@+id/fragment_flow_step_three" />
+        <argument
+            android:name="longPeriod"
+            app:argType="integer" />
     </fragment>
 
     <fragment
@@ -63,6 +66,12 @@
         <action
             android:id="@+id/action_flow_step_three_to_home"
             app:destination="@id/home_dest" />
+        <argument
+            android:name="longPeriod"
+            app:argType="integer" />
+        <argument
+            android:name="longCycle"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/getStartedFragment"

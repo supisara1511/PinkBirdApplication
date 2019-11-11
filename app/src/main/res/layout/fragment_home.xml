@@ -6,9 +6,9 @@
     tools:context="buu.informatics.s59160134.pinkbirdapplication.home.HomeFragment">
 
     <data>
-        <variable
-            name="homeViewModel"
-            type="buu.informatics.s59160134.pinkbirdapplication.home.HomeViewModel" />
+<!--        <variable-->
+<!--            name="homeViewModel"-->
+<!--            type="buu.informatics.s59160134.pinkbirdapplication.home.HomeViewModel" />-->
 
         <variable
             name="home"
@@ -74,8 +74,10 @@
             app:layout_constraintEnd_toStartOf="@+id/getStared_btn2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            android:enabled="@{homeViewModel.startButtonVisible}"
-            android:onClick="@{ () -> homeViewModel.startPeriod()}"/>
+           />
+<!--         android:enabled="@{homeViewModel.startButtonVisible}"-->
+<!--            android:onClick="@{ () -> homeViewModel.startPeriod()}"-->
+
 
         <Button
             android:id="@+id/getStared_btn2"
@@ -87,8 +89,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/start_btn"
-            android:enabled="@{homeViewModel.stopButtonVisible}"
-            android:onClick="@{ () -> homeViewModel.endPeriod()}"/>
+
+            />
+<!--       android:enabled="@{homeViewModel.stopButtonVisible}" -->
+<!--        android:onClick="@{ () -> homeViewModel.endPeriod()}"-->
 
         <ImageView
             android:id="@+id/imageView2"
