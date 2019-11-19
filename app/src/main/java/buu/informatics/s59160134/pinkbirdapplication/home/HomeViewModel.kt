@@ -48,6 +48,11 @@ class HomeViewModel(val database: PeriodDatabaseDao, val dataStarted : StartedDa
         get() = _countDate
 
 
+    private val _statusStart = MutableLiveData<Boolean>()
+    val statusStart : LiveData<Boolean>
+        get() = _statusStart
+
+
 
 
 
@@ -55,20 +60,26 @@ class HomeViewModel(val database: PeriodDatabaseDao, val dataStarted : StartedDa
     init {
         Log.i("HomeViewModel", "HomeViewModel created!")
         initializeTonight()
+
     }
 
     private fun initializeTonight() {
         uiScope.launch {
             period.value = getToPeriodFromDatabase()
             started.value = getToStartedFromDatabase()
-            _currentDate.value = getDateFormat()
-            var lastDate = changeDate(started.value!!.lastDate)
-            _countDate.value = ChronoUnit.DAYS.between(lastDate,LocalDate.now()).toInt()
-            Log.i("lastDate","${started.value}")
-            Log.i("countDate","${_countDate.value}")
+            if(started.value != null){
+                _statusStart.value = true
+                _currentDate.value = getDateFormat()
+                var lastDate = changeDate(started.value!!.lastDate)
+                _countDate.value = ChronoUnit.DAYS.between(lastDate,LocalDate.now()).toInt()
+                Log.i("lastDate","${started.value}")
+                Log.i("countDate","${_countDate.value}")
 
-            _havePeriod.value = period.value != null
-            checkStatusPeriod()
+                _havePeriod.value = period.value != null
+                checkStatusPeriod()
+            }else {
+                _statusStart.value = false
+            }
         }
     }
 

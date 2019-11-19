@@ -12,6 +12,7 @@ import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 
 import buu.informatics.s59160134.pinkbirdapplication.R
 import buu.informatics.s59160134.pinkbirdapplication.database.Home
@@ -29,10 +30,6 @@ import java.time.temporal.ChronoUnit
 class HomeFragment : Fragment() {
 
     private lateinit var viewModel: HomeViewModel
-    private var home : Home = Home("","","","")
-    private var longPeriod = 28
-    private var havePeriod = false
-
     @RequiresApi(value = Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,9 +47,19 @@ class HomeFragment : Fragment() {
         binding.homeViewModel = viewModel
         binding.lifecycleOwner = this
 
+
+        viewModel.statusStart.observe(this, Observer<Boolean?> { hasFinished ->
+            if (!hasFinished!!)
+                onFinished()
+        })
+
+
         return binding.root
     }
 
+    private fun onFinished() {
+        view?.findNavController()!!.navigate(R.id.getStartedFragment)
 
+    }
 
 }
