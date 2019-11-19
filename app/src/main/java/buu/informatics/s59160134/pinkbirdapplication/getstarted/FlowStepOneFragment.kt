@@ -11,13 +11,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import buu.informatics.s59160134.pinkbirdapplication.R
 import buu.informatics.s59160134.pinkbirdapplication.databinding.FragmentFlowStepOneBinding
+import java.util.logging.LogRecord
 import java.util.logging.LoggingPermission
 
 /**
  * A simple [Fragment] subclass.
  */
 class FlowStepOneFragment : Fragment() {
-    var longPeriod : Int = 4
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,15 +26,15 @@ class FlowStepOneFragment : Fragment() {
         var numberPicker = binding.longPeriodPicker
             numberPicker.minValue = 1
             numberPicker.maxValue = 10
-            numberPicker.value = longPeriod
+            numberPicker.value = 4
             numberPicker.wrapSelectorWheel = true
 
 
 
+
         binding.nextButton.setOnClickListener{ view : View ->
-//            Log.i("numberPicker","${numberPicker.value}")
-            val saveArgs = numberPicker.value
-            view.findNavController().navigate(FlowStepOneFragmentDirections.actionFlowStepOneToFlowStepTwo(saveArgs))
+        Log.i("numberPicker","${numberPicker.value}")
+            view.findNavController().navigate(FlowStepOneFragmentDirections.actionFlowStepOneToFlowStepTwo(numberPicker.value))
         }
         return binding.root
     }

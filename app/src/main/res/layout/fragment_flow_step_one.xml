@@ -26,18 +26,18 @@
 
     <NumberPicker
         android:id="@+id/longPeriod_Picker"
-        style="@android:style/Widget.Material.NumberPicker"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:layout_weight="1"
         app:layout_constraintBottom_toTopOf="@+id/next_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/step1_text"
+        app:layout_constraintVertical_bias="0.501" />
 
     <TextView
         android:id="@+id/step1_text"

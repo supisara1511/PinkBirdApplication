@@ -2,6 +2,7 @@ package buu.informatics.s59160134.pinkbirdapplication.getstarted
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -30,10 +31,9 @@ class FlowStepTwoFragment : Fragment() {
         val longPeriod = args.longPeriod
 
 
-
         binding.nextButton.setOnClickListener{ view : View ->
-            val saveArgs = numberPicker.value
-            view.findNavController().navigate(FlowStepTwoFragmentDirections.actionFlowStepTwoToFlowStepThree(longPeriod,saveArgs))
+            Log.i("FlowStepTwoFragment","${longPeriod} ${numberPicker.value}")
+            view.findNavController().navigate(FlowStepTwoFragmentDirections.actionFlowStepTwoToFlowStepThree(longPeriod,numberPicker.value))
 
         }
 

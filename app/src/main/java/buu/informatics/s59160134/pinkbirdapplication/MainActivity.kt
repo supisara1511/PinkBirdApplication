@@ -66,11 +66,11 @@ class MainActivity : AppCompatActivity() {
             Log.d("NavigationActivity", "Navigated to $dest")
         }
 
-        if(true){
+//        if(false){
             navController.navigate(R.id.getStartedFragment)
-        }else{
-            navController.navigate(R.id.home_dest)
-        }
+//        }else{
+//            navController.navigate(R.id.home_dest)
+//        }
 
 
 

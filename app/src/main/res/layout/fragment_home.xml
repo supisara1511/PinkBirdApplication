@@ -10,9 +10,6 @@
             name="homeViewModel"
             type="buu.informatics.s59160134.pinkbirdapplication.home.HomeViewModel" />
 
-        <variable
-            name="home"
-            type="buu.informatics.s59160134.pinkbirdapplication.database.Home"/>
     </data>
 
 
@@ -28,7 +25,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
-            android:text="@={home.currentDate}"
+            android:text="@{homeViewModel.currentDate}"
             android:textColor="@color/design_default_color_secondary_variant"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -52,14 +49,14 @@
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={home.statusPeriod}"
+                android:text="@{homeViewModel.statusPeriod}"
                 android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={home.countDate}"
+                android:text="@{String.valueOf(homeViewModel.countDate)}"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimary"
                 android:textSize="36sp" />

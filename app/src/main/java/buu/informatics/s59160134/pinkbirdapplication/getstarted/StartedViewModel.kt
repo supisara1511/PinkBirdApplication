@@ -34,7 +34,6 @@ class StartedViewModel(val database: StartedDatabaseDao, application: Applicatio
 
 
 
-
     fun setStrated(longPeriod : Int,longCycle : Int, lastDate : String){
         this.longPeriod = longPeriod
         this.longCycle = longCycle
@@ -69,15 +68,6 @@ class StartedViewModel(val database: StartedDatabaseDao, application: Applicatio
         withContext(Dispatchers.IO) {
             database.clear()
         }
-    }
-
-    private suspend fun getToStartedFromDatabase(): Started? {
-        return withContext(Dispatchers.IO) {
-            var started = database.getToStarted()
-            started
-        }
-
-
     }
 
 

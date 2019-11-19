@@ -43,45 +43,16 @@ class HomeFragment : Fragment() {
 
         val application = requireNotNull(this.activity).application
         val dataSource = PeriodDatabase.getInstance(application).PeriodDatabaseDao
-        val viewModelFactory = HomeViewModelFactory(dataSource, application)
+        val dataStarted = StartedDatabase.getInstance(application).StartedDatabaseDao
+        val viewModelFactory = HomeViewModelFactory(dataSource, dataStarted ,application)
 
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(HomeViewModel::class.java)
         binding.homeViewModel = viewModel
         binding.lifecycleOwner = this
 
-
-
-        val currentDate = LocalDate.now()
-        val lastDate = LocalDate.of(2019,11,9)
-        var countDate = ChronoUnit.DAYS.between(lastDate,currentDate)
-        checkStatusPeriod(countDate)
-        home.currentDate = changeFormattedDate(LocalDate.now())
-        binding.home = home
-
-
-
         return binding.root
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun changeFormattedDate(date : LocalDate) : String{
-        var formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy")
-        var formattedDate = date.format(formatter).toString()
-        return  formattedDate
-    }
-
-    fun checkStatusPeriod(countDate : Long){
-        if(havePeriod == true){
-            home.statusPeriod = "ประจำเดือนวันที่"
-            home.countDate = (countDate + 1).toString()
-        }else if (countDate > longPeriod) {
-            home.statusPeriod = "ประจำเกินมา"
-            home.countDate = (countDate - longPeriod).toString()
-        }else{
-            home.statusPeriod = "ประจำเดือนในอีก"
-            home.countDate = (longPeriod - countDate).toString()
-        }
-    }
 
 
 }

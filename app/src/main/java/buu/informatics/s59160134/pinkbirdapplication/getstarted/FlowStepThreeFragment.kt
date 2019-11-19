@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -20,6 +21,7 @@ import buu.informatics.s59160134.pinkbirdapplication.database.StartedDatabase
 import buu.informatics.s59160134.pinkbirdapplication.database.StartedDatabaseDao
 
 import buu.informatics.s59160134.pinkbirdapplication.databinding.FragmentFlowStepThreeBinding
+import java.time.LocalDate
 
 
 /**
@@ -43,12 +45,17 @@ class FlowStepThreeFragment : Fragment() {
         binding.lifecycleOwner = this
         val args = FlowStepThreeFragmentArgs.fromBundle(arguments!!)
         val calendarView = binding.lastPeriod
+        lastDate = LocalDate.now().toString()
+        viewModel.setStrated(args.longPeriod,args.longCycle,lastDate)
+
 
 
         viewModel.startedFinishEvent.observe(this, Observer<Boolean?> { hasFinished ->
             if (hasFinished!!)
                 onFinished()
         })
+
+
 
         calendarView?.setOnDateChangeListener { _, year, month, dayOfMonth ->
             lastDate = "" + year + "-" + (month + 1) + "-" + dayOfMonth
@@ -69,6 +76,7 @@ class FlowStepThreeFragment : Fragment() {
 
 
 }
+
 
 
 
