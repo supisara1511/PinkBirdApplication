@@ -57,17 +57,17 @@ class FlowStepThreeFragment : Fragment() {
 
 
 
-        calendarView?.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            lastDate = "" + year + "-" + (month + 1) + "-" + dayOfMonth
-            viewModel.setStrated(args.longPeriod,args.longCycle,lastDate)
+        calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
+            var date = LocalDate.of(year,month+1,dayOfMonth).toString()
+//            lastDate = "" + year + "-" + (month + 1) + "-" + dayOfMonth
+//            Log.i("lastDate","${lastDate}")
+            viewModel.setStrated(args.longPeriod,args.longCycle,date)
         }
-
-
-
-
 
         return  binding.root
     }
+
+
 
     private fun onFinished() {
         view?.findNavController()!!.navigate(R.id.home_dest)

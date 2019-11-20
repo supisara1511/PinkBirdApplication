@@ -85,8 +85,7 @@ class HomeViewModel(val database: PeriodDatabaseDao, val dataStarted : StartedDa
 
 
     fun changeDate(string: String) : LocalDate{
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-d", Locale.ENGLISH)
-        val date = LocalDate.parse(string, formatter)
+        val date = LocalDate.parse(string)
         return date
     }
 

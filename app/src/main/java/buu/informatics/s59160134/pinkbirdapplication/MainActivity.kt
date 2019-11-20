@@ -34,8 +34,11 @@ class MainActivity : AppCompatActivity() {
         drawerLayout = binding.drawerLayout
 
 
-        val host: NavHostFragment = supportFragmentManager.findFragmentById(R.id.my_nav_host_fragment) as NavHostFragment? ?: return
-        val navController = host.navController
+//        val host: NavHostFragment = supportFragmentManager.findFragmentById(R.id.my_nav_host_fragment) as NavHostFragment? ?: return
+//        val navController = host.navController
+
+
+        val navController = this.findNavController(R.id.my_nav_host_fragment)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         appBarConfiguration = AppBarConfiguration(
             setOf(R.id.home_dest, R.id.setting_dest, R.id.history_dest),
@@ -45,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBar(navController, appBarConfiguration)
         setupBottomNavMenu(navController)
         NavigationUI.setupWithNavController(binding.navView, navController)
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if(destination.id == R.id.getStartedFragment
                 || destination.id == R.id.fragment_flow_step_one
@@ -58,20 +62,8 @@ class MainActivity : AppCompatActivity() {
                 supportActionBar?.show()
 
             }
-            val dest: String = try {
-                resources.getResourceName(destination.id)
-            } catch (e: Resources.NotFoundException) {
-                Integer.toString(destination.id)
-            }
-            Log.d("NavigationActivity", "Navigated to $dest")
+//
         }
-
-//        if(false){
-//            navController.navigate(R.id.getStartedFragment)
-//        }else{
-//            navController.navigate(R.id.home_dest)
-//        }
-
 
 
     }
